@@ -1,0 +1,135 @@
+# just a little sophisticated zshrc
+# License : MIT
+# modified by mamekkoro(C)
+source $HOME/.zprofile
+########################################
+# environmental variable
+export LANG=ja_JP.UTF-8
+
+
+# enable colors
+autoload -Uz colors
+colors
+
+# enable emacs like keybinds
+bindkey -e
+
+# configuration of history
+HISTFILE=~/.zsh_history
+HISTSIZE=1000000
+SAVEHIST=1000000
+
+# prompt
+PROMPT="%F{yellow}[%n@%m:%F{blue}%~%f]%f%# "
+
+
+
+########################################
+# completion
+# enable comletion
+autoload -Uz compinit
+compinit
+
+# match lower chars to upper chars 
+zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}'
+
+# no completion after ../ 
+zstyle ':completion:*' ignore-parents parent pwd ..
+
+# completion of command name after sudo
+zstyle ':completion:*:sudo:*' command-path /usr/local/sbin /usr/local/bin \
+                   /usr/sbin /usr/bin /sbin /bin /usr/X11R6/bin
+
+# completion of process name after ps 
+zstyle ':completion:*:processes' command 'ps x -o pid,s,args'
+
+
+
+
+########################################
+# options
+# enable japanese file names
+setopt print_eight_bit
+
+# disable beep
+setopt no_beep
+
+# disable flow control 
+setopt no_flow_control
+
+# no exit after Ctrl+D
+#setopt ignore_eof
+
+# comment out after '#'
+setopt interactive_comments
+
+# move directoriy only with directory-name 
+setopt auto_cd
+
+# pushd with cd 
+setopt auto_pushd
+# pushd ignore duplicate dirs
+setopt pushd_ignore_dups
+
+# share history with zshs
+setopt share_history
+
+# ignore dupulicate command 
+setopt hist_ignore_all_dups
+
+# remove command begins with space for history
+setopt hist_ignore_space
+
+# remove blanks for history
+setopt hist_reduce_blanks
+
+# enable extended glob
+setopt extended_glob
+
+########################################
+# key bindings
+
+# when serch with ^R, enables '*' 
+bindkey '^R' history-incremental-pattern-search-backward
+
+########################################
+# aliases
+alias la='ls -a'
+alias ll='ls -l'
+
+alias rm='rm -i'
+alias cp='cp -i'
+alias mv='mv -i'
+
+alias mkdir='mkdir -p'
+
+# enable aliases after sudo
+alias sudo='sudo '
+
+# global aliases
+alias -g L='| less'
+alias -g G='| grep'
+
+
+
+
+########################################
+# setting for other OSs 
+case ${OSTYPE} in
+    darwin*)
+        #Mac
+        export CLICOLOR=1
+        alias ls='ls -G -F'
+	alias toomsep='print "found eset processes using port number:`sudo lsof -n -i TCP |grep eset |cut -d" " -f 2 |uniq`"'
+        ;;
+    linux*)
+        #Linux
+        alias ls='ls -F --color=auto'
+	if [[ -f /etc/zsh_command_not_found ]] then
+		source /etc/zsh_command_not_found
+	fi
+	;;
+esac
+
+
+
