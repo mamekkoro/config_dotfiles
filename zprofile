@@ -20,6 +20,16 @@ export PATH MANPATH DYLD_LIBRARY_PATH
 
 export PYENV_ROOT="$HOME/.pyenv"
 export PATH="$PYENV_ROOT/bin:$PATH"
-eval $(/home/linuxbrew/.linuxbrew/bin/brew shellenv)
+
+
+case ${OSTYPE} in
+	linux*)
+		eval $(/home/linuxbrew/.linuxbrew/bin/brew shellenv)
+		;;
+	darwin*)
+		eval $(/home/homebrew/bin/brew shellenv)"
+		;;
+
+
 
 eval "$(pyenv init -)"
