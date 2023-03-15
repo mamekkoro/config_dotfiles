@@ -27,7 +27,7 @@ case ${OSTYPE} in
 		eval $(/home/linuxbrew/.linuxbrew/bin/brew shellenv)
 		;;
 	darwin*)
-		eval $(/home/homebrew/bin/brew shellenv)"
+		eval $(/home/homebrew/bin/brew shellenv)
 		;;
 
 
