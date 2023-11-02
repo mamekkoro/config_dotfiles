@@ -98,6 +98,8 @@ bindkey '^R' history-incremental-pattern-search-backward
 alias la='ls -a'
 alias ll='ls -l'
 
+alias xless='less -X'
+
 alias rm='rm -i'
 alias cp='cp -i'
 alias mv='mv -i'
@@ -132,11 +134,17 @@ case ${OSTYPE} in
     darwin*)
         #Mac
         export CLICOLOR=1
+	#Source-hilight with less
+	export LESSOPEN="| /usr/local/share/source-highlight/src-hilite-lesspipe.sh %s"
+	export LESS='-R'
         alias ls='ls -G -F'
 	alias toomsep='print "found eset processes using port number:`sudo lsof -n -i TCP |grep eset |cut -d" " -f 2 |uniq`"'
         ;;
     linux*)
         #Linux
+	#Source-hilight with less
+	export LESSOPEN="| /usr/share/source-highlight/src-hilite-lesspipe.sh %s"
+	export LESS='-R'
         alias ls='ls -F --color=auto'
 	if [[ -f /etc/zsh_command_not_found ]] then
 		source /etc/zsh_command_not_found
