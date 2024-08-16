@@ -13,9 +13,8 @@ export NLSPATH=/usr/local/man:$NLSPATH
 export LD_LIBRARY_PATH=/usr/X11/lib
 
 
-MANPATH=$MANPATH:/usr/local/man
-DYLD_LIBRARY_PATH=$DYLD_LIBRARY_PATH
-export PATH MANPATH DYLD_LIBRARY_PATH
+export MANPATH=$MANPATH:/usr/local/man
+export DYLD_LIBRARY_PATH=$DYLD_LIBRARY_PATH
 
 
 
@@ -165,4 +164,11 @@ case ${OSTYPE} in
 esac
 
 
+eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+
+
+
+export PYENV_ROOT="$HOME/.pyenv"
+[[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"
+eval "$(pyenv init -)"
 
