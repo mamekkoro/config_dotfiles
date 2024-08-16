@@ -2,10 +2,22 @@
 # License : MIT
 # modified by mamekkoro(C)
 source $HOME/.zprofile
+umask 022
 ########################################
 # environmental variable
+export PATH=$HOME/bin:.:/usr/X11R6/bin:/usr/local/bin:/usr/local/sbin:/sbin:$PATH
 export LANG=ja_JP.UTF-8
 export LANGUAGE="ja_JP:ja"
+export LESSCHARSET=utf-8
+export NLSPATH=/usr/local/man:$NLSPATH
+export LD_LIBRARY_PATH=/usr/X11/lib
+
+
+MANPATH=$MANPATH:/usr/local/man
+DYLD_LIBRARY_PATH=$DYLD_LIBRARY_PATH
+export PATH MANPATH DYLD_LIBRARY_PATH
+
+
 
 
 # enable colors
