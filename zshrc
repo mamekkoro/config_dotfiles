@@ -124,19 +124,50 @@ alias sudo='sudo '
 alias -g L='| less'
 alias -g G='| grep'
 
-if [[ $(command -v exa) ]]; then
-  alias e='exa --icons'
+# === Rust CLI tools aliases if available ===
+
+# eza (ls replacement)
+if command -v eza >/dev/null 2>&1; then
+  alias e='eza --icons'
   alias l=e
   alias ls=e
-  alias ea='exa -a --icons'
+  alias ea='eza -a --icons'
   alias la=ea
-  alias ee='exa -aal --icons'
+  alias ee='eza -aal --icons'
   alias ll=ee
-  alias et='exa -T -L 3 -a -I "node_modules|.git|.cache" --icons'
+  alias et='eza -T -L 3 -a -I "node_modules|.git|.cache" --icons'
   alias lt=et
-  alias eta='exa -T -a -I "node_modules|.git|.cache" --color=always --icons | less -r'
+  alias eta='eza -T -a -I "node_modules|.git|.cache" --color=always --icons | less -r'
   alias lta=eta
 fi
+
+# bat (cat replacement)
+if command -v bat >/dev/null 2>&1; then
+  alias cat='bat'
+  alias b='bat'
+fi
+
+# fd (find replacement)
+if command -v fd >/dev/null 2>&1; then
+  alias f='fd'
+fi
+
+# ripgrep (grep replacement)
+if command -v rg >/dev/null 2>&1; then
+  alias grep='rg'
+  alias r='rg'
+fi
+
+# tokei (code statistics)
+if command -v tokei >/dev/null 2>&1; then
+  alias codecount='tokei'
+fi
+
+# procs (ps replacement)
+if command -v procs >/dev/null 2>&1; then
+  alias ps='procs'
+fi
+
 
 
 ########################################
@@ -162,7 +193,6 @@ case ${OSTYPE} in
 	fi
 	;;
 esac
-
 
 eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 
