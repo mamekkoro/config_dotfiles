@@ -38,7 +38,7 @@ autoload -Uz compinit
 compinit
 
 # match lower chars to upper chars
-zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}'
+#zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}'
 
 # no completion after ../
 zstyle ':completion:*' ignore-parents parent pwd ..
