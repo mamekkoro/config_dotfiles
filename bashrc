@@ -1,22 +1,14 @@
-export LANG=ja_JP.UTF-8
+# ~/.bashrc: executed by bash for interactive shells.
 
 if [ ! -f ~/.colorrc ]; then
-	dircolors -p > ~/.colorrc
+  dircolors -p > ~/.colorrc
 fi
 
+eval "$(dircolors ~/.colorrc)"
+alias ls='ls --color=auto -F'
+alias la='ls -a'
+alias ll='ls -l'
 
-if [ "$(uname)" = 'Darwin' ]; then
-#    export LSCOLORS=xbfxcxdxbxegedabagacad
-    alias ls='ls -G'
-else
-    eval `dircolors ~/.colorrc`
-    alias ls='ls --color=auto'
-fi
-alias la="ls -aF "
-alias ll="ls -la "
-alias less="less -X "
+alias less='less -X'
+
 PS1='[\u@\h:\w]\$ '
-
-
-
-
