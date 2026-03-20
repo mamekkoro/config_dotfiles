@@ -76,7 +76,7 @@ alias rm='rm -i'
 alias cp='cp -i'
 alias mv='mv -i'
 alias mkdir='mkdir -p'
-
+alias tma='tmux new -A -s main'
 # enable aliases after sudo
 alias sudo='sudo '
 
