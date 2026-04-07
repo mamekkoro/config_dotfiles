@@ -142,7 +142,6 @@ case "${OSTYPE}" in
   darwin*)
     export CLICOLOR=1
     export LESS='-R'
-    alias toomsep='print "found eset processes using port number:`sudo lsof -n -i TCP | grep eset | cut -d" " -f 2 | uniq`"'
     ;;
   linux*)
     export LESS='-R'
