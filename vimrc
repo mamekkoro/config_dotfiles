@@ -18,6 +18,13 @@ inoremap <C-b> <Left>
 inoremap <C-f> <Right>
 inoremap <C-p> <Up>
 inoremap <C-n> <Down>
+inoremap <C-d> <Delete>
+inoremap <C-h> <BS>
 
 " Kill to end of line, similar to Cocoa/Emacs C-k
 inoremap <C-k> <C-o>D
+
+noremap x "_x"
+
+" Vim's copy func syncs macOS clipboard
+set clipboard=unnamed,unnamedplus
